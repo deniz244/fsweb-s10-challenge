@@ -30,7 +30,10 @@ function baslangicNotlariniGetir(key) {
   }
 }
 
-export function reducer(state = baslangicDegerleri, action) {
+export function reducer(
+  state = baslangicNotlariniGetir(s10chLocalStorageKey),
+  action
+) {
   let newState = {};
 
   switch (action.type) {
