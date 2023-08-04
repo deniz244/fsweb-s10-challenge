@@ -4,7 +4,14 @@ import { nanoid } from "nanoid";
 import { useHistory } from "react-router";
 import Gratitude from "./../assets/grForm.png";
 
+import { useDispatch } from "react-redux";
+
+import { notEkle } from "../actions";
+import { set } from "date-fns";
+
 export default function PostForm() {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -26,6 +33,9 @@ export default function PostForm() {
     // toast mesajı gösterin
     // sonra aşağıdaki satırı aktifleştirin
     // setTimeout(() => history.push("/notlar"), 2000);
+
+    dispatch(notEkle(yeniNot));
+    setTimeout(() => history.push("/notlar"), 1000);
   }
 
   const inputCx = "border border-zinc-300 h-9 rounded-none text-sm px-2 w-full";
@@ -35,7 +45,6 @@ export default function PostForm() {
       <div className="flex-1">
         <img src={Gratitude} alt="" className="block object-cover h-full" />
       </div>
-
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -48,8 +57,8 @@ export default function PostForm() {
           yansıtmalara kadar pek çok şeyden oluşabilir.
         </p>
         <p className="text-stone-700 my-3 text-xs">
-          Her gün belli saatlerde 3 maddeden oluşan bir liste
-          yapmak, bu alışkanlığa iyi bir başlangıç noktası sayılır.
+          Her gün belli saatlerde 3 maddeden oluşan bir liste yapmak, bu
+          alışkanlığa iyi bir başlangıç noktası sayılır.
         </p>
         <div>
           <input
@@ -76,10 +85,7 @@ export default function PostForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="myButton"
-        >
+        <button type="submit" className="myButton">
           Ekle
         </button>
       </form>
