@@ -6,7 +6,7 @@ import Gratitude from "./../assets/grForm.png";
 
 import { useDispatch } from "react-redux";
 
-import { notEkle } from "../actions";
+import { notEkle, notEkleAPI } from "../actions";
 
 export default function PostForm() {
   const dispatch = useDispatch();
@@ -33,7 +33,8 @@ export default function PostForm() {
     // sonra aşağıdaki satırı aktifleştirin
     // setTimeout(() => history.push("/notlar"), 2000);
 
-    dispatch(notEkle(yeniNot));
+    //dispatch(notEkle(yeniNot));
+    dispatch(notEkleAPI(yeniNot));
     setTimeout(() => history.push("/notlar"), 2000);
   }
 
