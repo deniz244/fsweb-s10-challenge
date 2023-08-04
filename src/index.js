@@ -21,12 +21,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <>
-        <ToastContainer />
-        <App />
-      </>
-    </BrowserRouter>
-  </Provider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <ToastContainer />
+      <App />
+    </Provider>
+  </BrowserRouter>
 );

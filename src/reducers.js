@@ -37,7 +37,7 @@ export function reducer(state = baslangicDegerleri, action) {
     case NOT_EKLE:
       newState = {
         ...state,
-        notlar: [action.payload, ...state.notlar],
+        notlar: [...state.notlar, action.payload],
       };
       localStorageStateYaz(s10chLocalStorageKey, newState);
       return newState;

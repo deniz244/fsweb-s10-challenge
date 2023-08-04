@@ -7,7 +7,6 @@ import Gratitude from "./../assets/grForm.png";
 import { useDispatch } from "react-redux";
 
 import { notEkle } from "../actions";
-import { set } from "date-fns";
 
 export default function PostForm() {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export default function PostForm() {
     // setTimeout(() => history.push("/notlar"), 2000);
 
     dispatch(notEkle(yeniNot));
-    setTimeout(() => history.push("/notlar"), 1000);
+    setTimeout(() => history.push("/notlar"), 2000);
   }
 
   const inputCx = "border border-zinc-300 h-9 rounded-none text-sm px-2 w-full";

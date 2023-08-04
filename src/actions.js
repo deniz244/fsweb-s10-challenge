@@ -1,9 +1,13 @@
 import axios from "axios";
 
+import { toast } from "react-toastify";
+
 export const NOT_EKLE = "NOT_EKLE";
 export const NOT_SIL = "NOT_SIL";
 
 export function notEkle(not) {
+  const notify = () => toast("Not Eklendi!");
+  notify();
   return { type: NOT_EKLE, payload: not };
 }
 
@@ -17,6 +21,8 @@ export const notEkleAPI = (yeniNot) => (dispatch) => {
     .then((res) => {
       if (res.status === 200) {
         // res.data objesi içerisinden ihtiyaç duyduğunuz değeri bulun ve oluşturduğunuz notEkle ile dispatch edin
+        dispatch(notEkle(res.data.json));
+        console.log(res.data);
       }
     })
     .catch((error) => console.log(error));
@@ -29,6 +35,7 @@ export const notSilAPI = (id) => (dispatch) => {
     .then((res) => {
       if (res.status === 200) {
         // res.data objesi içerisinden ihtiyaç duyduğunuz değeri bulun ve oluşturduğunuz notSil ile dispatch edin
+        dispatch(notSil(res.data.data));
       }
     })
     .catch((error) => console.log(error));
